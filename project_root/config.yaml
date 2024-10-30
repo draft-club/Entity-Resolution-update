@@ -1,0 +1,22 @@
+﻿prepare_ref:
+  input_path: "data_extr/contribuable_derniere_situation_cleanes_clean_all.parquet"
+  output_path: "output_data/data_contribuable.csv"
+
+prepare_source:
+  input_path: "data_input_csv/ppa.csv"
+  output_path: "output_data/source_ppa.csv"
+
+concat_source:
+  source_path: "output_data/source_ppa.csv"
+  reference_path: "output_data/data_contribuable.csv"
+  output_path: "data_input_model/data_concatenated.csv"
+
+splink:
+  concat_data_path: "data_input_model/data_concatenated.csv"
+  output_file_path: "resolved_ER/ppa_resolved_entities_with_custom_ids.csv"
+
+analyze:
+  input_path: "resolved_ER/ppa_resolved_entities_with_custom_ids.csv"
+  single_record_output: "analyze/single_record_Grossistes_clusters.csv"
+  final_output: "analyze/Grossistes_final_filtered_entities_with_identification_status.csv"
+  summary_stats: "analyze/summary_grossistes_s_record_statistics.csv"

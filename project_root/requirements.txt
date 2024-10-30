@@ -1,0 +1,6 @@
+﻿pandas
+os
+json
+kubeflow
+kfp
+pyyaml

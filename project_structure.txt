@@ -1,0 +1,16 @@
+project_root/
+├── components/
+│   ├── prepare_ref_component.py
+│   ├── prepare_source_component.py
+│   ├── concat_source_component.py
+│   ├── splink_component.py
+│   └── analyze_component.py
+├── utils/
+│   ├── data_utils.py
+│   ├── file_utils.py
+│   └── mapping_utils.py
+├── constants.py
+├── config.yaml
+├── .env
+├── requirements.txt
+└── main_pipeline.py
