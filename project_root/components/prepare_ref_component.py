@@ -1,24 +1,25 @@
-﻿# components/prepare_ref_component.py
-
-from utils.data_utils import filter_columns, rename_columns
+﻿from utils.data_utils import filter_columns, rename_columns
 from utils.file_utils import read_parquet, save_to_csv, read_json
 from utils.mapping_utils import generate_column_mapping
 import os
 import constants
 
 
+def filter_condition_ref(col):
+    return col == 'primary_key' or ('_clean' in col and '_j_clean' not in col)
+
+
+@kfp.components.func_to_container_op
 def prepare_ref():
-    df = read_parquet(constants.DATA_PATH_REF)
-    df_filtered = filter_columns(df)
-
     try:
+        df = read_parquet(constants.DATA_PATH_REF)
+        df_filtered = filter_columns(df, filter_condition_ref)
+
         mapping = read_json(constants.MAPPING_FILE)
-    except FileNotFoundError as e:
-        print(f"Error: {e}")
-        return
+        column_mapping = generate_column_mapping(df_filtered, mapping)
+        df_renamed = rename_columns(df_filtered, column_mapping)
 
-    column_mapping = generate_column_mapping(df_filtered, mapping)
-    df_renamed = rename_columns(df_filtered, column_mapping)
-
-    save_to_csv(df_renamed, os.path.join(constants.OUTPUT_DIR, 'data_contribuable.csv'))
-    print("Data saved to output_data/data_contribuable.csv")
+        save_to_csv(df_renamed, constants.OUTPUT_FILE_REF)
+        print("Data saved to", constants.OUTPUT_FILE_REF)
+    except Exception as e:
+        print("Error in prepare_ref component:", e)

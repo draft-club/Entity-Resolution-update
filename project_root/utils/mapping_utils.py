@@ -1,13 +1,10 @@
-﻿# utils/mapping_utils.py
-
-def generate_column_mapping(df, mapping_json):
-    column_mapping = {}
+﻿def generate_column_mapping(df, mapping, primary_key="primary_key"):
+    """Generate column mapping based on JSON mapping and DataFrame columns."""
+    column_mapping = {primary_key: primary_key}
     for column in df.columns:
-        if column == "primary_key":
-            column_mapping[column] = "primary_key"
-        else:
-            for category, attributes in mapping_json.items():
-                if column in attributes['features']:
+        if column != primary_key:
+            for category, attributes in mapping.items():
+                if column in attributes["features"]:
                     column_mapping[column] = category
                     break
     return column_mapping

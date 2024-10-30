@@ -1,0 +1,19 @@
+project_directory/
+│
+├── components/
+│   ├── prepare_ref_component.py
+│   ├── prepare_source_component.py
+│   ├── concat_component.py
+│   ├── analyse_component.py
+│   └── splink_component.py
+│
+├── utils/
+│   ├── data_utils.py
+│   ├── file_utils.py
+│   └── mapping_utils.py
+│
+├── pipelines/
+│   └── entity_resolution_pipeline.py
+│
+├── constants.py
+└── Dockerfile

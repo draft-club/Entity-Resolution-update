@@ -1,5 +1,7 @@
-﻿# constants.py
-
-DATA_PATH_REF = 'data_extr/contribuable_derniere_situation_cleanes_clean_all.parquet'
-MAPPING_FILE = 'mapper/mapping.json'
-OUTPUT_DIR = 'output_data'
+﻿DATA_PATH_REF = "data_extr/contribuable_derniere_situation_cleanes_clean_all.parquet"
+DATA_PATH_SOURCE = "data_input_csv/ppa.csv"
+MAPPING_FILE = "mapper/mapping.json"
+OUTPUT_DIR = "output_data"
+OUTPUT_FILE_REF = f"{OUTPUT_DIR}/data_contribuable.csv"
+OUTPUT_FILE_SOURCE = f"{OUTPUT_DIR}/source_ppa.csv"
+CONCAT_OUTPUT_FILE = "data_input_model/data_concatenated.csv"
