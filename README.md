@@ -42,12 +42,6 @@ The pipeline defined in main\_pipeline.py must be compiled to a YAML file that K
 
 # compile_pipeline.py  
 
-from kfp import dsl  
-from kfp.compiler import Compiler  
-from main_pipeline import data_pipeline  
-if __name__ == "__main__":      
-   Compiler().compile(data_pipeline, "data_pipeline.yaml")   `
-
 Run the script to create data\_pipeline.yaml:
 
 python compile_pipeline.py   `
