@@ -17,7 +17,7 @@ Prerequisites
 
 ### Setting Up Kubeflow
 
-1.  bashCopy codepip install kfp
+1.  pip install kfp
     
 2.  Ensure you have access to a Kubeflow instance. You can set up Kubeflow locally using Minikube or on the cloud using managed Kubeflow services.
     
@@ -25,11 +25,11 @@ Prerequisites
 Building and Running the Project Locally
 ----------------------------------------
 
-1.  bashCopy codegit clone https://github.com/your-repository/kubeflow-pipeline-project.gitcd kubeflow-pipeline-project
+1.  git clone https://github.com/your-repository/kubeflow-pipeline-project.gitcd kubeflow-pipeline-project
     
-2.  bashCopy codedocker build -t your\_project\_image\_name .
+2.  docker build -t kubeflow_mainpipeline .
     
-3.  bashCopy codedocker run -it --rm your\_project\_image\_name
+3.  docker run -it --rm kubeflow_mainpipeline
     
 
 Deploying the Project on Kubeflow
@@ -41,11 +41,17 @@ To deploy this pipeline on Kubeflow, follow these steps:
 
 The pipeline defined in main\_pipeline.py must be compiled to a YAML file that Kubeflow can interpret. Use the following Python script or command to compile the pipeline:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   pythonCopy code# compile_pipeline.py  from kfp import dsl  from kfp.compiler import Compiler  from main_pipeline import data_pipeline  if __name__ == "__main__":      Compiler().compile(data_pipeline, "data_pipeline.yaml")   `
+# compile_pipeline.py  
+
+from kfp import dsl  
+from kfp.compiler import Compiler  
+from main_pipeline import data_pipeline  
+if __name__ == "__main__":      
+   Compiler().compile(data_pipeline, "data_pipeline.yaml")   `
 
 Run the script to create data\_pipeline.yaml:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopy codepython compile_pipeline.py   `
+python compile_pipeline.py   `
 
 This will generate a data\_pipeline.yaml file in the project directory.
 
