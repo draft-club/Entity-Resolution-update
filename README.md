@@ -2,9 +2,6 @@
 
 This repo demonstrates how to set up and run a data processing and entity resolution pipeline using Kubeflow. The pipeline components are modularized and organized into Python scripts that perform various tasks, including data preparation, concatenation, entity resolution with Splink, and data analysis.  
 
-## Project Structure  
-
-```  project_root/  ├── components/  │   ├── prepare_ref_component.py  │   ├── prepare_source_component.py  │   ├── concat_source_component.py  │   ├── splink_component.py  │   └── analyze_component.py  ├── utils/  │   ├── data_utils.py  │   ├── file_utils.py  │   └── mapping_utils.py  ├── constants.py  ├── config.yaml  ├── .env  ├── requirements.txt  ├── Dockerfile  └── main_pipeline.py   `
 
 Prerequisites
 -------------
