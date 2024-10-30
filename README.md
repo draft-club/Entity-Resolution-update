@@ -24,12 +24,11 @@ Prerequisites
 
 Building and Running the Project Locally
 ----------------------------------------
-
-1.  git clone https://github.com/your-repository/kubeflow-pipeline-project.gitcd kubeflow-pipeline-project
+Clone the Repo and cd into ./project_root
     
-2.  docker build -t kubeflow_mainpipeline .
+1.  docker build -t kubeflow_mainpipeline .
     
-3.  docker run -it --rm kubeflow_mainpipeline
+2.  docker run -it --rm kubeflow_mainpipeline
     
 
 Deploying the Project on Kubeflow
